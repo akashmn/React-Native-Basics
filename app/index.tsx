@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Image, ImageBackground, Modal, Pressable, ScrollView, Text, View, Alert, ActivityIndicator, StyleSheet } from "react-native";
+import { Button, Image, ImageBackground, Modal, Pressable, ScrollView, Text, View, Alert, ActivityIndicator, StyleSheet, useWindowDimensions } from "react-native";
 
 // importing custom components
 import Greet from "@/components/Greet";
@@ -7,12 +7,18 @@ import Greet from "@/components/Greet";
 // importing images
 const bgImage = require("@/assets/images/adaptive-icon.png");
 
+
+
+
+
 export default function Index() {
 
   const [modalVisible, setModalVisible] = useState(false); // state for modal visibility
+  const windowWidth = useWindowDimensions().width; // getting window width
+  const windowHeight = useWindowDimensions().height; // getting window height
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container,  {width: windowWidth, height: windowHeight}]}>
       <ImageBackground source={bgImage} style={styles.imageBackground}>
         <Greet name="Akash" />
         <View style={[styles.box, styles.boxShadow, styles.androidShadow]}>
