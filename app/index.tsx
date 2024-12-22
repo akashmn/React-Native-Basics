@@ -78,6 +78,8 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     padding: 20,
+    borderWidth: 4,
+    borderRadius: 20,
   },
   helloText: {
     color: "white",
