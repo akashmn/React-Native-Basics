@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Image, ImageBackground, Modal, Pressable, ScrollView, Text, View } from "react-native";
+import { Button, Image, ImageBackground, Modal, Pressable, ScrollView, StatusBar, Text, View } from "react-native";
 
 // importing images
 const bgImage = require("@/assets/images/adaptive-icon.png");
@@ -16,6 +16,7 @@ export default function Index() {
       justifyContent: "center",
       alignItems: "center",
     }}>
+      <StatusBar barStyle="light-content" backgroundColor="plum" />
       <ImageBackground source={bgImage} 
         style={{flex: 1,
           width: "100%",
