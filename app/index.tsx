@@ -1,4 +1,7 @@
-import { Text, View } from "react-native";
+import { ImageBackground, Text, View } from "react-native";
+
+// importing images
+const bgImage = require("@/assets/images/adaptive-icon.png");
 
 export default function Index() {
   return (
@@ -8,36 +11,43 @@ export default function Index() {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      gap: 20,
     }}>
-      <View style={{
-        backgroundColor: "lightblue",
-        width: 200,
-        height: 200,
-        display: "flex",
-        justifyContent: "center",
-        padding: 20,
-      }}>
-        <Text>
-          <Text style={{color: "white", fontSize: 20}}>Hello</Text> , world!
-        </Text>
-        
-      </View>
+      <ImageBackground source={bgImage} 
+        style={{flex: 1,
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 20,
+        }}>
+        <View style={{
+          backgroundColor: "lightblue",
+          width: 200,
+          height: 200,
+          display: "flex",
+          justifyContent: "center",
+          padding: 20,
+        }}>
+          <Text>
+            <Text style={{color: "white", fontSize: 20}}>Hello</Text> , world!
+          </Text>
+          
+        </View>
 
-      <View style={{
-        backgroundColor: "lightgreen",
-        width: 200,
-        height: 200,
-        display: "flex",
-        justifyContent: "center",
-        padding: 20,
-      }}>
-        <Text>
-          <Text style={{color: "white", fontSize: 20}}>Goodbye</Text> , world!
-        </Text>
-        
-      </View>
-
+        <View style={{
+          backgroundColor: "lightgreen",
+          width: 200,
+          height: 200,
+          display: "flex",
+          justifyContent: "center",
+          padding: 20,
+        }}>
+          <Text>
+            <Text style={{color: "white", fontSize: 20}}>Goodbye</Text> , world!
+          </Text>
+          
+        </View>
+      </ImageBackground>
     </View>
   );
 }
