@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Image, ImageBackground, Modal, Pressable, ScrollView, Text, View, Alert, ActivityIndicator, StyleSheet, useWindowDimensions } from "react-native";
+import { Button, Image, ImageBackground, Modal, Pressable, ScrollView, Text, View, Alert, ActivityIndicator, StyleSheet, useWindowDimensions, SafeAreaView, Platform } from "react-native";
 
 // importing custom components
 import Greet from "@/components/Greet";
@@ -18,54 +18,62 @@ export default function Index() {
   const windowHeight = useWindowDimensions().height; // getting window height
 
   return (
-    <View style={[styles.container,  {width: windowWidth, height: windowHeight}]}>
-      <ImageBackground source={bgImage} style={styles.imageBackground}>
-        <Greet name="Akash" />
-        <View style={[styles.box, styles.boxShadow, styles.androidShadow]}>
-          <ScrollView>
-            <Text>
-              <Text style={styles.helloText}>Hello</Text> , world!
-            </Text>
-            <Pressable onLongPress={() => alert("Long press on image")}>
-              <Image source={{uri: "https://picsum.photos/300"}} style={styles.image} />
-            </Pressable>
+    <SafeAreaView style={styles.safeAreaContainer}>
+      <View style={[styles.container,  {width: windowWidth, height: windowHeight}]}>
+        <ImageBackground source={bgImage} style={styles.imageBackground}>
+          <Greet name="Akash" />
+          <View style={[styles.box, styles.boxShadow, styles.androidShadow]}>
+            <ScrollView>
+              <Text>
+                <Text style={styles.helloText}>Hello</Text> , world!
+              </Text>
+              <Pressable onLongPress={() => alert("Long press on image")}>
+                <Image source={{uri: "https://picsum.photos/300"}} style={styles.image} />
+              </Pressable>
 
-            <Text style={styles.loremText}>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            </Text>
-          </ScrollView>
-          <Button title="Click me" onPress={() => setModalVisible(true)} />
-        </View>
-        
-        <Modal
-          visible={modalVisible}
-          onRequestClose={() => setModalVisible(false)}
-        >
-          <View style={styles.modalBox}>
-            <Text>
-              <Text style={styles.goodbyeText}>Goodbye</Text> , world!
-            </Text>
-            <Image source={{uri: "https://picsum.photos/400"}} style={styles.image} />
-
-            <Button title="Alert 1" onPress={() => Alert.alert("Alert 1")} />
-            <Button title="Alert 2" onPress={() => Alert.alert("Invalid Data", "DOB Incorrect!")} />
-            <Button title="Alert 3" onPress={() => Alert.alert("Invalid Data", "DOB Incorrect!", [
-              {text: "OK", onPress: () => console.log("OK Pressed")},
-              {text: "Cancel", onPress: () => console.log("Cancel Pressed")},
-            ])} />
-
+              <Text style={styles.loremText}>
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              </Text>
+            </ScrollView>
+            <Button title="Click me" onPress={() => setModalVisible(true)} />
           </View>
-          <Button title="Close" onPress={() => setModalVisible(false)} />
-          <ActivityIndicator size="large" color="midnightblue" animating={true} />
-        </Modal>
-      </ImageBackground>
-    </View>
+          
+          <Modal
+            visible={modalVisible}
+            onRequestClose={() => setModalVisible(false)}
+          >
+            <View style={styles.modalBox}>
+              <Text>
+                <Text style={styles.goodbyeText}>Goodbye</Text> , world!
+              </Text>
+              <Image source={{uri: "https://picsum.photos/400"}} style={styles.image} />
+
+              <Button title="Alert 1" onPress={() => Alert.alert("Alert 1")} />
+              <Button title="Alert 2" onPress={() => Alert.alert("Invalid Data", "DOB Incorrect!")} />
+              <Button title="Alert 3" onPress={() => Alert.alert("Invalid Data", "DOB Incorrect!", [
+                {text: "OK", onPress: () => console.log("OK Pressed")},
+                {text: "Cancel", onPress: () => console.log("Cancel Pressed")},
+              ])} />
+
+            </View>
+            <Button title="Close" onPress={() => setModalVisible(false)} />
+            <ActivityIndicator size="large" color="midnightblue" animating={true} />
+          </Modal>
+        </ImageBackground>
+      </View>
+    </SafeAreaView>
   );
 }
 
 // styles for the components (StyleSheet method)
 
 const styles = StyleSheet.create({
+
+  safeAreaContainer:{
+    flex: 1,
+    backgroundColor: "yellow",
+  },
+
   container: {
     backgroundColor: "plum",
     flex: 1,
@@ -95,8 +103,17 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 20,
   },
-  loremText: {
-    marginTop: 10,
+  loremText : {
+    ...Platform.select({
+      ios: {
+        color: "black",
+        fontSize: 15,
+      },
+      android: {
+        color: "white",
+        fontSize: 20,
+      }
+    })
   },
   image: {
     width: 150,
