@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ActivityIndicator, Button, Image, ImageBackground, Modal, Pressable, ScrollView, StatusBar, Text, View } from "react-native";
+import { ActivityIndicator, Alert, Button, Image, ImageBackground, Modal, Pressable, ScrollView, StatusBar, Text, View } from "react-native";
 
 // importing images
 const bgImage = require("@/assets/images/adaptive-icon.png");
@@ -68,8 +68,16 @@ export default function Index() {
             <Image source={{uri: "https://picsum.photos/400"}} style={{width: 150, height: 150}} />
             
           </View>
-          <Button title="Close" onPress={() => setModalVisible(false)} />
+
+          <Button title="Alert 1" onPress={() => Alert.alert("Alert 1")} />
+          <Button title="Alert 2" onPress={() => Alert.alert("Invalid Data", "DOB Incorrect!")} />
+          <Button title="Alert 3" onPress={() => Alert.alert("Invalid Data", "DOB Incorrect!", [
+            {text: "OK", onPress: () => console.log("OK Pressed")},
+            {text: "Cancel", onPress: () => console.log("Cancel Pressed")},
+          ])} />
+
           <ActivityIndicator size="large" color="midnightblue" animating={true} />
+          <Button title="Close" onPress={() => setModalVisible(false)} />
         </Modal>
       </ImageBackground>
     </View>
