@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Image, ImageBackground, Modal, Pressable, ScrollView, StatusBar, Text, View } from "react-native";
+import { ActivityIndicator, Button, Image, ImageBackground, Modal, Pressable, ScrollView, StatusBar, Text, View } from "react-native";
 
 // importing images
 const bgImage = require("@/assets/images/adaptive-icon.png");
@@ -15,6 +15,7 @@ export default function Index() {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+      gap: 20,
     }}>
       <StatusBar barStyle="light-content" backgroundColor="plum" />
       <ImageBackground source={bgImage} 
@@ -23,7 +24,6 @@ export default function Index() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          gap: 20,
         }}>
 
         <View style={{
@@ -69,6 +69,7 @@ export default function Index() {
             
           </View>
           <Button title="Close" onPress={() => setModalVisible(false)} />
+          <ActivityIndicator size="large" color="midnightblue" animating={true} />
         </Modal>
       </ImageBackground>
     </View>
