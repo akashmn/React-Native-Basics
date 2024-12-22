@@ -1,4 +1,4 @@
-import { ImageBackground, Text, View } from "react-native";
+import { Image, ImageBackground, Text, View } from "react-native";
 
 // importing images
 const bgImage = require("@/assets/images/adaptive-icon.png");
@@ -20,6 +20,7 @@ export default function Index() {
           alignItems: "center",
           gap: 20,
         }}>
+
         <View style={{
           backgroundColor: "lightblue",
           width: 200,
@@ -31,6 +32,7 @@ export default function Index() {
           <Text>
             <Text style={{color: "white", fontSize: 20}}>Hello</Text> , world!
           </Text>
+          <Image source={{uri: "https://picsum.photos/300"}} style={{width: 150, height: 150}} />
           
         </View>
 
@@ -45,6 +47,7 @@ export default function Index() {
           <Text>
             <Text style={{color: "white", fontSize: 20}}>Goodbye</Text> , world!
           </Text>
+          <Image source={{uri: "https://picsum.photos/400"}} style={{width: 150, height: 150}} />
           
         </View>
       </ImageBackground>
