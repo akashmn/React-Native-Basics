@@ -36,15 +36,17 @@ export default function Index() {
               <Text style={styles.goodbyeText}>Goodbye</Text> , world!
             </Text>
             <Image source={{uri: "https://picsum.photos/400"}} style={styles.image} />
-            <Button title="Close" onPress={() => setModalVisible(false)} />
+
             <Button title="Alert 1" onPress={() => Alert.alert("Alert 1")} />
             <Button title="Alert 2" onPress={() => Alert.alert("Invalid Data", "DOB Incorrect!")} />
             <Button title="Alert 3" onPress={() => Alert.alert("Invalid Data", "DOB Incorrect!", [
               {text: "OK", onPress: () => console.log("OK Pressed")},
               {text: "Cancel", onPress: () => console.log("Cancel Pressed")},
             ])} />
-            <ActivityIndicator size="large" color="midnightblue" animating={true} />
+
           </View>
+          <Button title="Close" onPress={() => setModalVisible(false)} />
+          <ActivityIndicator size="large" color="midnightblue" animating={true} />
         </Modal>
       </ImageBackground>
     </View>
@@ -71,8 +73,8 @@ const styles = StyleSheet.create({
   },
   box: {
     backgroundColor: "lightblue",
-    width: 200,
-    height: 200,
+    width: 300,
+    height: 300,
     display: "flex",
     justifyContent: "center",
     padding: 20,
@@ -90,8 +92,8 @@ const styles = StyleSheet.create({
   },
   modalBox: {
     backgroundColor: "lightgreen",
-    width: 200,
-    height: 200,
+    width: 300,
+    height: 500,
     display: "flex",
     justifyContent: "center",
     padding: 20,
