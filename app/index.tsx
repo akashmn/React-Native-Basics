@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { ActivityIndicator, Alert, Button, Image, ImageBackground, Modal, Pressable, ScrollView, StatusBar, Text, View } from "react-native";
 
+// importing Custom Components
+import Greet from "@/components/Greet"
+
 // importing images
 const bgImage = require("@/assets/images/adaptive-icon.png");
 
@@ -36,7 +39,7 @@ export default function Index() {
         }}>
           <ScrollView>
             <Text>
-              <Text style={{color: "white", fontSize: 20}}>Hello</Text> , world!
+              <Text style={{color: "white", fontSize: 20}}>Hello</Text> <Greet name={"Akash"} />
             </Text>
             <Pressable onLongPress={() => alert("Long press on image")}>
               <Image source={{uri: "https://picsum.photos/300"}} style={{width: 150, height: 150}} />
