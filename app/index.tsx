@@ -11,7 +11,7 @@ export default function Index() {
   return (
     <View style={styles.container}>
       <ImageBackground source={bgImage} style={styles.imageBackground}>
-        <View style={styles.box}>
+        <View style={[styles.box, styles.boxShadow, styles.androidShadow]}>
           <ScrollView>
             <Text>
               <Text style={styles.helloText}>Hello</Text> , world!
@@ -104,4 +104,15 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 20,
   },
+
+  boxShadow:{
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 5,
+  },
+
+  androidShadow: {
+    elevation: 5,
+  }
 });
