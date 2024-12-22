@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Button, Image, ImageBackground, Modal, Pressable, ScrollView, Text, View, Alert, ActivityIndicator, StyleSheet } from "react-native";
 
+// importing custom components
+import Greet from "@/components/Greet";
+
 // importing images
 const bgImage = require("@/assets/images/adaptive-icon.png");
 
@@ -11,6 +14,7 @@ export default function Index() {
   return (
     <View style={styles.container}>
       <ImageBackground source={bgImage} style={styles.imageBackground}>
+        <Greet name="Akash" />
         <View style={[styles.box, styles.boxShadow, styles.androidShadow]}>
           <ScrollView>
             <Text>
